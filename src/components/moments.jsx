@@ -1,49 +1,95 @@
-import React from 'react';
-import momentImage1 from '../assets/moments1.jpg'; // Adjust paths as necessary
-import momentImage2 from '../assets/image2.jpg';
-import momentImage3 from '../assets/moments3.jpg';
+
+import React, { useState, useEffect } from 'react';
+
+import momentImage1 from '../assets/moments/moments1.jpg'; // Adjust paths as necessary
+import momentImage2 from '../assets/moments/moments2.jpg';
+import momentImage3 from '../assets/moments/moments3.jpg';
+import momentImage4 from '../assets/moments/moments4.jpg';
 
 const Moments = () => {
+    const [currentStartIndex, setCurrentStartIndex] = useState(0);
+    const momentImages = [momentImage1, momentImage2, momentImage3, momentImage4]; // Replace with your actual moment images
+    const imagesToShow = 3; // Number of images to show at a time
+
+    const nextMoment = () => {
+        setCurrentStartIndex((prev) => (prev + 1) % momentImages.length);
+    };
+
+    const prevMoment = () => {
+        setCurrentStartIndex((prev) => (prev - 1 + momentImages.length) % momentImages.length);
+    };
+
+
+    const displayedImages = momentImages.slice(currentStartIndex, currentStartIndex + imagesToShow)
+        .concat(momentImages.slice(0, Math.max(0, (currentStartIndex + imagesToShow) - momentImages.length)));
+    const [isHovered, setIsHovered] = useState(false);
+
+    // useEffect to update hover state
+    useEffect(() => {
+        const handleMouseEnter = () => {
+            setIsHovered(true);
+        };
+
+        const handleMouseLeave = () => {
+            setIsHovered(false);
+        };
+
+        return () => {
+            setIsHovered(false); // Reset state on component unmount
+        };
+    }, []);
     return (
-        <section className="bg-orange-500 py-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-12 text-center">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-4">Moments</h2>
-                    <p className="text-gray-600">Explore some memorable moments from our club.</p>
+        <section className="py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="mb-12 text-center text-lg italic text-white">
+                    <h2 className="text-3xl font-bold mb-4 bg-white text-orange-600 p-4 block rounded-full mx-auto" style={{ width: '50%' }}>
+                        Moments
+                    </h2>
+                    <br />
+                    <p className="text-2xl">Explore some memorable moments from our club.</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    {/* Moment 1 */}
-                    <div className="relative">
-                        <img src={momentImage1} alt="Moment 1" className="w-full h-full object-cover rounded-lg shadow-md" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center">
-                                <h3 className="text-lg font-semibold text-white">Winter Tournament 2023</h3>
-                                <p className="text-white text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </div>
-                    </div>
+                {/* Navigation Buttons */}
+                <button
+                    onClick={prevMoment}
+                    className="absolute top-1/2 left-0 transform -translate-y-1/2 flex items-center justify-center text-white text-3xl focus:outline-none z-10 ml-1"
+                    style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    }}
+                >
+                    &#8249;
+                </button>
+                <button
+                    onClick={nextMoment}
+                    className="absolute top-1/2 right-0 transform -translate-y-1/2 flex items-center justify-center text-white text-3xl focus:outline-none z-10 mr-1"
+                    style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    }}
+                >
+                    &#8250;
+                </button>
 
-                    {/* Moment 2 */}
-                    <div className="relative">
-                        <img src={momentImage2} alt="Moment 2" className="w-full h-full object-cover rounded-lg shadow-md" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center">
-                                <h3 className="text-lg font-semibold text-white">Skiing Workshop</h3>
-                                <p className="text-white text-sm">Nulla quis lorem ut libero malesuada feugiat.</p>
-                            </div>
+                {/* Gallery */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+                    {displayedImages.map((image, index) => (
+                        <div
+                            key={index}
+                            className="relative overflow-hidden transform transition-transform duration-1000 ease-in-out hover:scale-110"
+                        >
+                            <img
+                                src={image}
+                                alt={`Moment ${index + 1}`}
+                                className="w-full h-full object-cover rounded-lg shadow-md"
+                                style={{ aspectRatio: '1 / 1' }}
+                            />
                         </div>
-                    </div>
-                    {/* Moment 3*/}
-                    <div className="relative">
-                        <img src={momentImage3} alt="Moment 3" className="w-full h-full object-cover rounded-lg shadow-md" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center">
-                                <h3 className="text-lg font-semibold text-white">Skiing Workshop</h3>
-                                <p className="text-white text-sm">Nulla quis lorem ut libero malesuada feugiat.</p>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

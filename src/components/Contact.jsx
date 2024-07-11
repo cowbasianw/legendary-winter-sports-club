@@ -1,6 +1,6 @@
 // src/components/Contact.jsx
 import React from 'react';
-import contact from '../assets/contact1.jpg';
+import contact from '../assets/images/contact1.jpg';
 
 
 const Contact = () => {

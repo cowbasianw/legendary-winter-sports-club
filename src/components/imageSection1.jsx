@@ -5,17 +5,17 @@ import image3 from '../assets/image3.jpg';
 
 const ImageSection = ({ image, text }) => {
     return (
-        <div className="flex items-center justify-center  px-16 ">
+        <div className="flex items-center justify-center px-16 ">
             {/* Image on the left */}
-            <div className="w-1/2">
-                <img src={image3} alt="Encouragement" className="w-full h-auto rounded-lg" />
+            <div className="w-1/2 flex items-center justify-center">
+                <img src={image3} alt="Encouragement" className="w-full h-auto rounded-lg border-8 border-white" />
             </div>
 
             {/* Text on the right */}
             <div className="w-1/2 p-8 text-center bg-opacity-75 text-white ">
                 <p className="text-center text-lg italic">
                     <br />
-                    <span className="text-3xl font-bold" >
+                    <span className="text-3xl font-bold bg-white text-orange-600 p-4 block rounded-full" >
                         Fun Fact!
                     </span><br /><br />
                     <span className="text-2xl">
