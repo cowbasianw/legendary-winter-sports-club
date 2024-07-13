@@ -9,7 +9,7 @@ import momentImage4 from '../assets/moments/moments4.jpg';
 const Moments = () => {
     const [currentStartIndex, setCurrentStartIndex] = useState(0);
     const momentImages = [momentImage1, momentImage2, momentImage3, momentImage4]; // Replace with your actual moment images
-    const imagesToShow = 3; // Number of images to show at a time
+    const [imagesToShow, setImagesToShow] = useState(1); // Default to 1 image for small screens
 
     const nextMoment = () => {
         setCurrentStartIndex((prev) => (prev + 1) % momentImages.length);
@@ -19,9 +19,25 @@ const Moments = () => {
         setCurrentStartIndex((prev) => (prev - 1 + momentImages.length) % momentImages.length);
     };
 
+    useEffect(() => {
+        const updateImagesToShow = () => {
+            if (window.innerWidth >= 1024) { // Large screens
+                setImagesToShow(3);
+            } else if (window.innerWidth >= 768) { // Medium screens
+                setImagesToShow(2);
+            } else { // Small screens
+                setImagesToShow(1);
+            }
+        };
+        updateImagesToShow();
+        window.addEventListener('resize', updateImagesToShow);
+        return () => window.removeEventListener('resize', updateImagesToShow);
+    }, []);
 
-    const displayedImages = momentImages.slice(currentStartIndex, currentStartIndex + imagesToShow)
+    const displayedImages = momentImages
+        .slice(currentStartIndex, currentStartIndex + imagesToShow)
         .concat(momentImages.slice(0, Math.max(0, (currentStartIndex + imagesToShow) - momentImages.length)));
+
     const [isHovered, setIsHovered] = useState(false);
 
     // useEffect to update hover state
@@ -42,11 +58,11 @@ const Moments = () => {
         <section className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div className="mb-12 text-center text-lg italic text-white">
-                    <h2 className="text-3xl font-bold mb-4 bg-white text-orange-600 p-4 block rounded-full mx-auto" style={{ width: '50%' }}>
+                    <h2 className="text-2xl lg:text-3xl font-bold mb-4 bg-white text-orange-600 p-4 block rounded-full mx-auto" style={{ width: '50%' }}>
                         Moments
                     </h2>
                     <br />
-                    <p className="text-2xl">Explore some memorable moments from our club.</p>
+                    <p className="text-1xl lg:text-2xl">Explore some memorable moments from our club.</p>
                 </div>
 
                 {/* Navigation Buttons */}
@@ -76,7 +92,7 @@ const Moments = () => {
                 </button>
 
                 {/* Gallery */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                     {displayedImages.map((image, index) => (
                         <div
                             key={index}

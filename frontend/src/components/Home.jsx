@@ -31,8 +31,8 @@ const HomePage = () => {
                 {/* Text Overlay */}
                 <div className="absolute top-0 w-full flex items-start text-center justify-center mt-20">
                     <h1 className="text-center text-orange-600 font-bold italic shadow-md" style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }} >
-                        <span className="text-6xl">Welcome to</span><br />
-                        <span className="text-8xl">Legendary Winter Sports Club</span>
+                        <span className="text-1xl md:text-4xl lg:text-6xl">Welcome to</span><br />
+                        <span className="text-3xl md:text-6xl lg:text-8xl">Legendary Winter Sports Club</span>
                     </h1>
 
                 </div>
@@ -45,20 +45,30 @@ const HomePage = () => {
 
                     <p className="text-center text-lg italic">
                         <br />
-                        <span className="text-4xl font-bold bg-white p-4 block rounded-full">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-white p-4 block rounded-full">
                             Join Legendary, Become Legendary!
                         </span><br /><br />
-                        <span className="text-2xl font-bold bg-white p-4 block rounded-l-full rounded-r-full mx-auto" style={{ marginLeft: '-10rem', marginRight: '-10rem', width: 'calc(100% + 20rem)' }}>
+                    </p>
+                </div>
+                <div className="lg:max-w-5xl mx-auto px-4">
+                    <p className="text-center text-lg italic">
+                        <span className="text-1xl lg:text-2xl font-bold bg-white p-4 block rounded-l-full rounded-r-full mx-auto">
                             Legendary Winter Sports Club is committed to not only teach entertaining sport, but also cultivating elite skaters.
-                        </span> <br /><br />
-                        <span className="text-2xl font-bold bg-white p-4 block rounded-full">
+                        </span>  <br /><br />
+                    </p>
+
+                </div>
+                <div className="lg:max-w-4xl mx-auto px-4">
+                    <p className="text-center text-lg italic">
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-white p-4 block rounded-full">
                             Discover the thrill of winter sports with our world-class programs.
                         </span><br /><br />
                     </p>
                 </div>
             </div>
+
             {/* Image section 2*/}
-            <ImageSection2 />
+            < ImageSection2 />
             <br /><br />
             {/* main profile Section */}
             <ProfileSection1 />
@@ -67,15 +77,15 @@ const HomePage = () => {
             {/* Hottest Program Promotion Section */}
             <div className=" bg-opacity-75 py-8">
                 <div className="max-w-4xl mx-auto text-center">
-                    <p className="text-center text-lg italic text-orange-600">
+                    <p className="text-center lg:text-lg italic text-orange-600">
 
-                        <span className="text-4xl font-bold bg-white  p-4 block rounded-full" >
+                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-white  p-4 block rounded-full" >
                             Our most popular program for personalized training and rapid improvement.
                         </span><br /><br />
                     </p>
                 </div>
                 <div className="max-w-4xl mx-auto flex items-center justify-center mt-4">
-                    <img src={hottestProgramImage} alt="1V1 Private Session" className="w-2/3 h-auto rounded-lg" />
+                    <img src={hottestProgramImage} alt="1V1 Private Session" className="w-full lg:w-2/3 h-auto rounded-lg" />
                 </div>
                 <div className="text-center mt-6 ">
                     <button
@@ -94,7 +104,7 @@ const HomePage = () => {
             {/* Moments section */}
             <Moments />
 
-        </div>
+        </div >
     );
 };
 
