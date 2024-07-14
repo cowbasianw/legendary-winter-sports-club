@@ -3,10 +3,12 @@ import video from '../assets/videos/41.mov';
 import hottestProgramImage from '../assets/program_images/1v1Private.png';
 
 
-import Moments from './moments.jsx';
-import ImageSection1 from './imageSection1.jsx';
-import ImageSection2 from './imageSection2.jsx';
-import ProfileSection1 from './profileSection1.jsx';
+import Moments from './sections/moments.jsx';
+import ImageSection1 from './sections/Longtrack.jsx';
+import VisionSection from './sections/visionSection.jsx';
+import MissionSection from './sections/missionSection.jsx';
+
+import ProfileSection1 from './sections/profileSection1.jsx';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -66,9 +68,11 @@ const HomePage = () => {
                     </p>
                 </div>
             </div>
-
-            {/* Image section 2*/}
-            < ImageSection2 />
+            {/* mission section */}
+            < MissionSection />
+            <br /><br />
+            {/* vision section */}
+            < VisionSection />
             <br /><br />
             {/* main profile Section */}
             <ProfileSection1 />

@@ -1,5 +1,5 @@
 import React from 'react';
-import image3 from '../assets/image3.jpg';
+import image3 from '../../assets/image3.jpg';
 
 const ImageSection = () => {
     return (
@@ -19,6 +19,10 @@ const ImageSection = () => {
                     <span className="lg:text-2xl text-1xl">
                         Long-track speedskating, commonly referred to as "speedskating" focuses on straight-line speed and
                         endurance over long distances and has a faster pace than short-track speed-skating.
+                        <br /><br />
+                        Long track offers opportunities for personal growth and achievement, as skaters strive to improve their performance and their best times for different distances.
+                        If you enjoy working on your personal growth as a skater endurance and stamina-wise and enjoy pushing yourself to skate faster and faster,
+                        or you’re interested in the power and speed of skating a larger track, consider long track!
                     </span>
                 </p>
             </div>

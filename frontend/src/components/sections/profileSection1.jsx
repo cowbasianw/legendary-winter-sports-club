@@ -1,7 +1,7 @@
 // components/profileSection.jsx
 
 import React from 'react';
-import profile1 from '../assets/images/profile1.png';
+import profile1 from '../../assets/images/Winner.jpg';
 
 const profileSection = ({ image, text }) => {
 
@@ -21,11 +21,11 @@ const profileSection = ({ image, text }) => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center px-4 md:px-16 py-8">
+        <div className="flex flex-col md:flex-row items-center justify-center px-4 lg:px-16 py-8">
 
             {/* Image on the left */}
             <div className="w-full md:w-1/2 flex items-center justify-center mb-8 md:mb-0">
-                <img src={profile1} alt="profile main" className="w-3/4 h-auto rounded-lg mx-auto border-8 border-white" /> {/* Added mx-auto to center the image */}
+                <img src={profile1} alt="profile main" className="w-full h-auto rounded-lg mx-auto border-8 border-white" /> {/* Added mx-auto to center the image */}
             </div>
 
             {/* Text on the right */}

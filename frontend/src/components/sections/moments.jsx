@@ -1,14 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
 
-import momentImage1 from '../assets/moments/moments1.jpg'; // Adjust paths as necessary
-import momentImage2 from '../assets/moments/moments2.jpg';
-import momentImage3 from '../assets/moments/moments3.jpg';
-import momentImage4 from '../assets/moments/moments4.jpg';
+import momentImage1 from '../../assets/moments/moments1.jpg'; // Adjust paths as necessary
+import momentImage2 from '../../assets/moments/moments2.jpg';
+import momentImage3 from '../../assets/moments/moments3.jpg';
+import momentImage4 from '../../assets/moments/moments4.jpg';
+import momentImage5 from '../../assets/moments/moments5.jpg';
+
 
 const Moments = () => {
     const [currentStartIndex, setCurrentStartIndex] = useState(0);
-    const momentImages = [momentImage1, momentImage2, momentImage3, momentImage4]; // Replace with your actual moment images
+    const momentImages = [momentImage1, momentImage2, momentImage3, momentImage4, momentImage5];
     const [imagesToShow, setImagesToShow] = useState(1); // Default to 1 image for small screens
 
     const nextMoment = () => {

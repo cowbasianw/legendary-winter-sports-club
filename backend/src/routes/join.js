@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const transporter = require('../config/nodemailerConfig');
+const transporter = require('../config/nodemailerconfig.js');
 
 router.post('/', (req, res) => {
     const { name, email, message, phone } = req.body;
