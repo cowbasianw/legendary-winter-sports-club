@@ -1,7 +1,7 @@
 // src/components/About.jsx
 import React from 'react';
 import YinQi from '../assets/bios/QinYin.jpg';
-import logo1 from '../assets/images/logo1.jpg';
+import logo1 from '../assets/images/Logo1.jpg';
 
 
 

@@ -10,6 +10,8 @@ import MissionSection from './sections/missionSection.jsx';
 
 import ProfileSection1 from './sections/profileSection1.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext.jsx';
+
 
 
 
@@ -23,35 +25,34 @@ const HomePage = () => {
     return (
 
         <div className="flex flex-col min-h-screen">
+
+
             {/* Video Background */}
-            <div className="relative h-128 overflow-hidden ">
-                <video className="w-full mx-auto object-cover  " autoPlay muted loop>
+            <div className="relative h-128 overflow-hidden">
+                <video
+                    className="w-full h-full object-cover animation-fadeIn"
+                    autoPlay
+                    muted
+                    loop
+                >
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-
-                {/* Text Overlay */}
-                <div className="absolute top-0 w-full flex items-start text-center justify-center mt-20">
-                    <h1 className="text-center text-orange-600 font-bold italic shadow-md" style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }} >
-                        <span className="text-1xl md:text-4xl lg:text-6xl">Welcome to</span><br />
-                        <span className="text-3xl md:text-6xl lg:text-8xl">Legendary Winter Sports Club</span>
+                <div className="absolute inset-0 bg-black bg-opacity-20"></div> {/* Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <h1 className="text-center text-white font-bold italic " style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }} >
+                        <span className="text-3xl md:text-6xl lg:text-9xl">"Be Legendary."</span>
                     </h1>
-
                 </div>
             </div>
+
+
+
 
             {/* Intro Section */}
             <div className="relative bg-opacity-75 text-orange-600 py-8 flex-grow">
 
-                <div className="max-w-3xl mx-auto px-4">
 
-                    <p className="text-center text-lg italic">
-                        <br />
-                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-white p-4 block rounded-full">
-                            Join Legendary, Become Legendary!
-                        </span><br /><br />
-                    </p>
-                </div>
                 <div className="lg:max-w-5xl mx-auto px-4">
                     <p className="text-center text-lg italic">
                         <span className="text-1xl lg:text-2xl font-bold bg-white p-4 block rounded-l-full rounded-r-full mx-auto">

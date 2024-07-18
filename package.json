@@ -12,8 +12,11 @@
     "lint:both": "npm-run-all lint:frontend lint:backend",
     "test:backend": "cd backend && npm test",
     "test:frontend": "cd frontend && npm test",
+    "predeploy": "npm run build:frontend",
+    "deploy": "gh-pages -d frontend/dist",
     "test:both": "npm-run-all test:frontend test:backend"
   },
+  "homepage": "https://cowbasianw.github.io/legendary-winter-sports-club",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
@@ -23,6 +26,7 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "gh-pages": "^6.1.1",
     "npm-run-all": "^4.1.5"
   }
 }

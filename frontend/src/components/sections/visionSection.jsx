@@ -12,7 +12,7 @@ const VisionSection = ({ image, text }) => {
             </div>
 
             {/* text on the right on mobile, left on larger screens */}
-            <div className="w-full md:w-1/2 p-4 text-center bg-opacity-75 text-white order-first lg:order-first">
+            <div className="w-full md:w-1/2 p-4 text-center bg-opacity-75 text-black order-first lg:order-first">
                 <p className="text-center text-lg italic">
                     <span className="text-2xl lg:text-4xl font-bold bg-white text-orange-600 p-4 block rounded-full"  >
                         Our Vision

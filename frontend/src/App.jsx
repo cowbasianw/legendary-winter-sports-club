@@ -9,17 +9,14 @@ import Programs from './components/Programs.jsx';
 import Contact from './components/Contact.jsx';
 import Announcement from './components/Announcement.jsx';
 import backgroundImage from './assets/images/Background1.png'; // Adjust path as needed
+import { LanguageProvider } from './context/LanguageContext.jsx';
 
 
 function App() {
   return (
 
     <Router>
-      <div
-        className="min-h-screen bg-cover bg-center"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      >
-        <Header />
+      <LanguageProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -29,7 +26,7 @@ function App() {
           <Route path="/Announcement" element={<Announcement />} />
         </Routes>
         <Footer />
-      </div>
+      </LanguageProvider>,
     </Router>
 
   );

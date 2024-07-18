@@ -10,7 +10,7 @@ const ImageSection = () => {
             </div>
 
             {/* Text on the right */}
-            <div className="w-full md:w-1/2 p-8 text-center bg-opacity-75 text-white">
+            <div className="w-full md:w-1/2 p-8 text-center bg-opacity-75 text-black">
                 <p className="text-center lg:text-lg italic">
                     <span className="text-2xl lg:text-3xl font-bold bg-white text-orange-600 p-4 block rounded-full">
                         Fun Fact!

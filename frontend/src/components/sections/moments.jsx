@@ -59,7 +59,7 @@ const Moments = () => {
     return (
         <section className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="mb-12 text-center text-lg italic text-white">
+                <div className="mb-12 text-center text-lg italic text-black">
                     <h2 className="text-2xl lg:text-3xl font-bold mb-4 bg-white text-orange-600 p-4 block rounded-full mx-auto" style={{ width: '50%' }}>
                         Moments
                     </h2>
