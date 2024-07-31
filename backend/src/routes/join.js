@@ -11,7 +11,10 @@ router.post('/', (req, res) => {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
         subject: `Join Request from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\Phone: ${phone}\nMessage: ${message}`,
+        text: `Name: ${name}
+        \nEmail: ${email}
+        \nPhone: ${phone}
+        \nMessage: ${message}`,
         replyTo: email // Set the reply-to address to the user's email
     };
 

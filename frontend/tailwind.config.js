@@ -5,8 +5,15 @@ module.exports = {
     './public/index.html',
 
   ],
+
   theme: {
     extend: {
+      width: {
+        '240px': '240px', // Custom width for 240px
+      },
+      screens: {
+        'custom-lg': '1024px',
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0 },

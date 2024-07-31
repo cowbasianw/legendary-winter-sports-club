@@ -1,8 +1,8 @@
 // src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo1 from '../assets/images/Logo1.jpg';
-import { useLanguage } from '../context/LanguageContext.jsx';
+import logo1 from '../../assets/images/Logo1.jpg';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
 
 const Navbar = () => {
@@ -14,21 +14,21 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-opacity-75 flex bg-orange-400 text-white items-center justify-between px-4 py-2">
+        <nav className="fixed top-0 left-0 w-full bg-opacity-75 flex bg-orange-400 text-white items-center justify-between lg:px-4 py-2 z-50">
 
 
             <div className="flex items-center">
-                <img src={logo1} alt="Encouragement" className="w-16 h-16 lg:w-24 lg:h-24 object-cover" />
+                <img src={logo1} alt="Encouragement" className="w-16 md:h-16 lg:w-24 lg:h-24 object-cover" />
 
                 <div className="flex flex-col ml-2">
                     {language === 'EN' ? (
                         <>
-                            <p className="text-sm md:text-3xl lg:text-3xl font-bold">Legendary Winter Sports Club</p>
-                            <p className="text-sm md:text-lg lg:text-1xl font-bold">传琦冰雪俱乐部</p>
+                            <p className="text-sm md:text-sm lg:text-3xl font-bold">Legendary Winter Sports Club</p>
+                            <p className="text-sm md:text-sm lg:text-1xl font-bold">传琦冰雪俱乐部</p>
                         </>
                     ) : (
                         <>
-                            <p className="text-sm md:text-3xl lg:text-4xl font-bold">传琦冰雪俱乐部</p>
+                            <p className="text-sm md:text-1xl lg:text-4xl font-bold">传琦冰雪俱乐部</p>
                             <p className="text-sm font-bold">Legendary Winter Sports Club</p>
                         </>
                     )}
@@ -39,7 +39,7 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/"
-                        className="text-sm md:text-lg lg:text-xl font-bold  p-2 lg:p-4 block rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
                     >
                         {language === 'EN' ? 'Home' : '主页'}
                     </Link>
@@ -47,7 +47,7 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/about"
-                        className="text-sm md:text-lg lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
                     >
                         {language === 'EN' ? 'About' : '关于我们'}
                     </Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/programs"
-                        className="text-sm md:text-lg lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
                     >
                         {language === 'EN' ? 'Programs' : '项目'}
                     </Link>
@@ -63,7 +63,7 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/Announcement"
-                        className="text-sm md:text-lg lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
                     >
                         {language === 'EN' ? 'Announcement' : '公告'}
                     </Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/contact"
-                        className="text-sm md:text-lg lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
                     >
                         {language === 'EN' ? 'Contact Us!' : '联系我们'}
                     </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
             </ul>
             <div className="flex items-center space-x-1 md:space-x-2 lg:space-x-4">
                 <button
-                    className="text-sm md:text-lg lg:text-xl font-bold p-2 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+                    className="text-xs md:text-sm lg:text-xl font-bold p-2 rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
                     onClick={toggleLanguage}
                 >
                     {language === 'EN' ? 'CN' : 'EN'}
