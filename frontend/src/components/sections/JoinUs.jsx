@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import { useLanguage } from '../../context/LanguageContext.jsx';
+import './styles.css';  // Import your custom CSS
+
 
 // Set base URL for Axios requests
 axios.defaults.baseURL = 'http://localhost:5001';
 
 const JoinForm = () => {
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -12,6 +18,7 @@ const JoinForm = () => {
         phone: ''
     });
     const [submitted, setSubmitted] = useState(false);
+    const { language, toggleLanguage } = useLanguage();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,7 +43,15 @@ const JoinForm = () => {
         const { name, value } = e.target;
         setFormData(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: value,
+
+
+        }));
+    };
+    const handlePhoneChange = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            phone: value,
         }));
     };
 
@@ -45,11 +60,20 @@ const JoinForm = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center py-8 lg:px-16">
+        <div className="flex flex-col items-center justify-center py-8 md:px-12 lg:px-16">
             <span className=" w-full text-center text-2xl lg:text-3xl font-bold bg-white text-orange-600 p-4 block rounded-full" >
-                Join Us!
+
+                {language === 'EN' ? (
+                    <>
+                        Join Us!
+                    </>
+                ) : (
+                    <>
+                        加入我们吧！
+                    </>
+                )}
             </span>
-            <form onSubmit={handleSubmit} className="bg-yellow-100 p-8 w-full rounded-lg shadow-md mt-8">
+            <form onSubmit={handleSubmit} className=" bg-blue-100 p-8 w-full rounded-lg shadow-md mt-8">
                 {submitted && (
                     <div className="bg-green-200 text-green-700 p-4 mb-4 rounded">
                         Request submitted successfully!
@@ -58,10 +82,18 @@ const JoinForm = () => {
                 )}
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                        Your Name<span className="text-orange-600">*</span>
+                        {language === 'EN' ? (
+                            <>
+                                Your Name<span className="text-orange-600">*</span>
+                            </>
+                        ) : (
+                            <>
+                                姓名<span className="text-orange-600">*</span>
+                            </>
+                        )}
                     </label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none md:w-2/3 lg:w-2/3 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="name"
                         type="text"
                         name="name"
@@ -74,10 +106,18 @@ const JoinForm = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                        Your Email<span className="text-orange-600">*</span>
+                        {language === 'EN' ? (
+                            <>
+                                Your Email<span className="text-orange-600">*</span>
+                            </>
+                        ) : (
+                            <>
+                                电子邮箱<span className="text-orange-600">*</span>
+                            </>
+                        )}
                     </label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="md:w-2/3 lg:w-2/3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="email"
                         type="email"
                         name="email"
@@ -89,26 +129,47 @@ const JoinForm = () => {
 
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                        Your phone number<span className="text-orange-600">*</span>
+                <div className="mb-4 ">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+                        {language === 'EN' ? (
+                            <>
+                                Your phone number<span className="text-orange-600">*</span>
+                            </>
+                        ) : (
+                            <>
+                                电话号码<span className="text-orange-600">*</span>
+                            </>
+                        )}
                     </label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="phone"
-                        type="phone"
-                        name="phone"
-                        placeholder="Your phone number"
+
+                    <PhoneInput
+                        country={'ca'}
                         value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        autoComplete="email"
+                        onChange={handlePhoneChange}
+                        inputProps={{
+                            name: 'phone',
+                            required: true,
+                            autoFocus: true,
+                        }}
+                        containerClass="w-full"
+
+                        inputClass="form-control border rounded p-2 w-full sm:w-240px md:w-1/2 lg:w-1/3"
 
                     />
+
+
                 </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
-                        Message us! (optional)
+                        {language === 'EN' ? (
+                            <>
+                                Message us! (optional)
+                            </>
+                        ) : (
+                            <>
+                                给我们短信<span className="text-orange-600">*</span>
+                            </>
+                        )}
                     </label>
                     <textarea
                         id="message"

@@ -1,109 +1,132 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import video from '../assets/videos/41.mov';
-import hottestProgramImage from '../assets/program_images/1v1Private.png';
-
-
 import Moments from './sections/moments.jsx';
 import ImageSection1 from './sections/Longtrack.jsx';
 import VisionSection from './sections/visionSection.jsx';
 import MissionSection from './sections/missionSection.jsx';
 
-import ProfileSection1 from './sections/profileSection1.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext.jsx';
+
 
 
 
 const HomePage = () => {
 
     const navigate = useNavigate();
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    const { language, toggleLanguage } = useLanguage();
     const handleButtonClick = () => {
         navigate('/programs'); // Adjust the path if it's different
     };
     return (
 
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen mt-20 md:mt-20 lg:mt-28">
+
             {/* Video Background */}
-            <div className="relative h-128 overflow-hidden ">
-                <video className="w-full mx-auto object-cover  " autoPlay muted loop>
+            <div className="relative h-128 overflow-hidden">
+                <video
+                    className="w-full h-full object-cover animation-fadeIn"
+                    autoPlay
+                    muted
+                    loop
+                >
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
+                <div className="absolute inset-0 bg-black bg-opacity-20"></div> {/* Overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center space-y-12 lg:space-y-24">
+                    {language === 'EN' ? (
+                        <h1 className="text-center text-white font-bold " style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }}>
+                            <span className="text-3xl md:text-6xl lg:text-9xl">"Be Legendary"</span>
+                        </h1>
+                    ) : (
+                        <h1 className="text-center text-white font-bold " style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }}>
+                            <span className="text-3xl md:text-6xl lg:text-9xl">"成为传奇"</span>
+                        </h1>
+                    )}
 
-                {/* Text Overlay */}
-                <div className="absolute top-0 w-full flex items-start text-center justify-center mt-20">
-                    <h1 className="text-center text-orange-600 font-bold italic shadow-md" style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }} >
-                        <span className="text-1xl md:text-4xl lg:text-6xl">Welcome to</span><br />
-                        <span className="text-3xl md:text-6xl lg:text-8xl">Legendary Winter Sports Club</span>
-                    </h1>
+                    <div className="mt-1 md:mt-6 lg:mt-24"></div> {/* Responsive spacing */}
 
+                    <button
+                        onClick={handleButtonClick}
+                        className="bg-orange-400 text-white text-sm lg:text-3xl font-bold py-2 px-4 md:py-4 md:px-8 lg:py-8 lg:px-14 
+                        rounded-full hover:bg-white hover:text-orange-600"
+                    >
+                        {language === 'EN' ? (
+                            <>
+                                Explore Programs
+                            </>
+                        ) : (
+                            <>
+                                探索我们的课程
+                            </>
+                        )}
+                    </button>
                 </div>
             </div>
 
             {/* Intro Section */}
-            <div className="relative bg-opacity-75 text-orange-600 py-8 flex-grow">
+            <div className="relative bg-opacity-75 bg-orange-400 text-white  py-8 flex-grow">
 
-                <div className="max-w-3xl mx-auto px-4">
 
-                    <p className="text-center text-lg italic">
-                        <br />
-                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-white p-4 block rounded-full">
-                            Join Legendary, Become Legendary!
-                        </span><br /><br />
-                    </p>
-                </div>
-                <div className="lg:max-w-5xl mx-auto px-4">
-                    <p className="text-center text-lg italic">
-                        <span className="text-1xl lg:text-2xl font-bold bg-white p-4 block rounded-l-full rounded-r-full mx-auto">
-                            Legendary Winter Sports Club is committed to not only teach entertaining sport, but also cultivating elite skaters.
-                        </span>  <br /><br />
-                    </p>
+                <div className="lg:max-w-6xl mx-auto px-4">
+                    {language === 'EN' ? (
+                        <>
+                            <br />
+                            <p className="text-center">
+
+                                <span className="text-sm md:text-2xl lg:text-4xl font-bold mx-auto">
+                                    “Legendary Winter Sports Club is committed to not only teach entertaining sport, but also cultivating elite skaters.”
+                                </span>  <br /><br /><br />
+                            </p>
+                        </>
+                    ) : (
+                        <>
+                            <br />
+                            <p className="text-center">
+                                <span className="text-sm md:text-2xl lg:text-4xl font-bold mx-auto">
+                                    ”传琦冰雪俱乐部致力于培养精英滑冰运动员，而不仅仅是娱乐。
+                                    欢迎大家关注井体验滑冰，让我们一起在孩子心中种下冠军的种子！“
+                                </span>  <br /><br /><br />
+                            </p>
+                        </>
+                    )}
+
 
                 </div>
                 <div className="lg:max-w-4xl mx-auto px-4">
-                    <p className="text-center text-lg italic">
-                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-white p-4 block rounded-full">
-                            Discover the thrill of winter sports with our world-class programs.
-                        </span><br /><br />
-                    </p>
+                    {language === 'EN' ? (
+                        <>
+                            <p className="text-center">
+                                <span className="text-sm md:text-2xl lg:text-3xl font-bold ">
+                                    “Discover the thrill of winter sports with our world-class programs.”
+                                </span>
+                            </p>
+                        </>
+                    ) : (
+
+                        <>
+                            <p className="text-center">
+                                <span className="text-sm md:text-2xl lg:text-4xl font-bold ">
+                                    “体验我们世界级项目带来的冬季运动激情。”
+                                </span>
+                            </p>
+                        </>
+                    )}
+
                 </div>
             </div>
+
+            <br /><br />
             {/* mission section */}
             < MissionSection />
             <br /><br />
             {/* vision section */}
             < VisionSection />
             <br /><br />
-            {/* main profile Section */}
-            <ProfileSection1 />
-            <br /><br />
-
-            {/* Hottest Program Promotion Section */}
-            <div className=" bg-opacity-75 py-8">
-                <div className="max-w-4xl mx-auto text-center">
-                    <p className="text-center lg:text-lg italic text-orange-600">
-
-                        <span className="text-2xl md:text-3xl lg:text-4xl font-bold bg-white  p-4 block rounded-full" >
-                            Our most popular program for personalized training and rapid improvement.
-                        </span><br /><br />
-                    </p>
-                </div>
-                <div className="max-w-4xl mx-auto flex items-center justify-center mt-4">
-                    <img src={hottestProgramImage} alt="1V1 Private Session" className="w-full lg:w-2/3 h-auto rounded-lg" />
-                </div>
-                <div className="text-center mt-6 ">
-                    <button
-                        onClick={handleButtonClick}
-                        className="bg-orange-600 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-700"
-                    >
-                        Explore Programs
-                    </button>
-                </div>
-
-            </div>
-            <br /><br />
-            {/* Image section 1*/}
-            <ImageSection1 />
 
             {/* Moments section */}
             <Moments />

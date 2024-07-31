@@ -1,0 +1,7 @@
+/* styles.css */
+@media (max-width: 320px) {
+    .react-tel-input .form-control {
+        width: 240px !important;
+        /* Ensure the width is 240px on small screens */
+    }
+}

@@ -1,17 +1,28 @@
 
 import React, { useState, useEffect } from 'react';
 
-import momentImage1 from '../../assets/moments/moments1.jpg'; // Adjust paths as necessary
-import momentImage2 from '../../assets/moments/moments2.jpg';
-import momentImage3 from '../../assets/moments/moments3.jpg';
-import momentImage4 from '../../assets/moments/moments4.jpg';
-import momentImage5 from '../../assets/moments/moments5.jpg';
-
+import momentImage1 from '../../assets/images/moments/moments1.jpg'; // Adjust paths as necessary
+import momentImage2 from '../../assets/images/moments/moments2.jpg';
+import momentImage3 from '../../assets/images/moments/moments3.jpg';
+import momentImage4 from '../../assets/images/moments/moments4.jpg';
+import momentImage5 from '../../assets/images/moments/moments5.jpg';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
 const Moments = () => {
+    const [selectedImage, setSelectedImage] = useState(null);
     const [currentStartIndex, setCurrentStartIndex] = useState(0);
     const momentImages = [momentImage1, momentImage2, momentImage3, momentImage4, momentImage5];
     const [imagesToShow, setImagesToShow] = useState(1); // Default to 1 image for small screens
+
+    const { language, toggleLanguage } = useLanguage();
+
+    const handleImageClick = (image) => {
+        setSelectedImage(image);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedImage(null);
+    };
 
     const nextMoment = () => {
         setCurrentStartIndex((prev) => (prev + 1) % momentImages.length);
@@ -59,12 +70,23 @@ const Moments = () => {
     return (
         <section className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="mb-12 text-center text-lg italic text-white">
-                    <h2 className="text-2xl lg:text-3xl font-bold mb-4 bg-white text-orange-600 p-4 block rounded-full mx-auto" style={{ width: '50%' }}>
-                        Moments
-                    </h2>
-                    <br />
-                    <p className="text-1xl lg:text-2xl">Explore some memorable moments from our club.</p>
+                <div className="mb-12 text-center text-lg text-black">
+                    {language === 'EN' ? (
+                        <>
+                            <h2 className="text-lg lg:text-3xl font-bold  bg-white text-orange-600 p-4 block rounded-full mx-auto" style={{ width: '50%' }}>
+                                Moments
+                            </h2>
+
+                            <p className="text-sm font-bold lg:text-2xl">Explore some memorable moments from our club.</p>
+                        </>
+                    ) : (
+                        <>
+                            <h2 className="text-lg lg:text-3xl font-bold bg-white text-orange-600 p-4 block rounded-full mx-auto" style={{ width: '50%' }}>
+                                高光时刻
+                            </h2>
+                            <p className="text-sm font-bold lg:text-2xl">探索我们俱乐部的一些难忘时刻。</p>
+                        </>
+                    )}
                 </div>
 
                 {/* Navigation Buttons */}
@@ -99,6 +121,8 @@ const Moments = () => {
                         <div
                             key={index}
                             className="relative overflow-hidden transform transition-transform duration-1000 ease-in-out hover:scale-110"
+                            onClick={() => handleImageClick(image)}
+
                         >
                             <img
                                 src={image}
@@ -107,8 +131,22 @@ const Moments = () => {
                                 style={{ aspectRatio: '1 / 1' }}
                             />
                         </div>
+
                     ))}
                 </div>
+                {/* Modal for Full-Sized Image */}
+                {selectedImage && (
+                    <div
+                        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75"
+                        onClick={handleCloseModal}
+                    >
+                        <img
+                            src={selectedImage}
+                            alt="Full Size"
+                            className="max-w-full max-h-full object-contain"
+                        />
+                    </div>
+                )}
             </div>
         </section>
     );

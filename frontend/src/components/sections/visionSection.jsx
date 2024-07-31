@@ -1,9 +1,12 @@
 // components/VisionSection.jsx
 
 import React from 'react';
-import image3 from '../../assets/moments/moments4.jpg';
+import image3 from '../../assets/images/moments/moments4.jpg';
+import { useLanguage } from '../../context/LanguageContext.jsx';
 
 const VisionSection = ({ image, text }) => {
+    const { language, toggleLanguage } = useLanguage();
+
     return (
         <div className="flex flex-col-reverse md:flex-row items-center justify-center px-4 lg:px-16 py-8">
             {/* image on the left on mobile, right on larger screens */}
@@ -12,17 +15,40 @@ const VisionSection = ({ image, text }) => {
             </div>
 
             {/* text on the right on mobile, left on larger screens */}
-            <div className="w-full md:w-1/2 p-4 text-center bg-opacity-75 text-white order-first lg:order-first">
-                <p className="text-center text-lg italic">
-                    <span className="text-2xl lg:text-4xl font-bold bg-white text-orange-600 p-4 block rounded-full"  >
-                        Our Vision
-                    </span>
-                    <br />
-                    <span className="text-1xl lg:text-2xl font-bold p-4 block rounded-xl">
-                        Legendary Winter Sports Club is dedicated to cultivating elite speed skaters.
-                        We hope to establish a professional, and well-trained team.
-                    </span><br />
-                </p>
+            <div className="w-full md:w-1/2 p-4 text-center bg-opacity-75 text-black order-first lg:order-first">
+                {language === 'EN' ? (
+                    <>
+                        <p className="text-center ">
+                            <span className="text-lg lg:text-4xl font-bold bg-white text-orange-600 p-4 block rounded-full"  >
+                                Our Vision
+                            </span>
+
+                            <span className="text-sm lg:text-2xl font-bold p-4 block rounded-xl">
+
+                                Legendary Winter Sports Club is dedicated to cultivating elite speed skaters.
+                                We hope to establish a professional, and well-trained team.
+
+
+                            </span>
+                        </p>
+                    </>
+                ) : (
+                    <>
+
+                        <p className="text-center ">
+                            <span className="text-lg lg:text-4xl font-bold bg-white text-orange-600 p-4 block rounded-full"  >
+                                我们的愿景
+                            </span>
+
+                            <span className="text-sm lg:text-2xl font-bold p-4 block rounded-xl">
+
+                                传奇冬季运动俱乐部致力于培养精英速滑选手。
+                                我们希望建立一支专业且训练有素的团队。
+
+                            </span>
+                        </p>
+                    </>
+                )}
             </div>
         </div>
 
