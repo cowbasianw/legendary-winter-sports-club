@@ -1,5 +1,5 @@
 import React from 'react';
-import image3 from '../../assets/images/image3.jpg';
+import image3 from '../../assets/images/bios/Josh3.JPG';;
 import { useLanguage } from '../../context/LanguageContext.jsx';
 
 

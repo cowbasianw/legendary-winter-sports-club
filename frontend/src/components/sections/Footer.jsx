@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import qrCode from '../../assets/images/QRcode.png';
+import redBook from '../../assets/images/Xiaohongshu-小红书-Logo.png';
 import { useLanguage } from '../../context/LanguageContext.jsx';
 
 
@@ -21,7 +22,7 @@ const Footer = () => {
                             <li>
                                 <Link
                                     to="/"
-                                    className="text-xs md:text-sm lg:text-base px-8 hover:bg-white hover:text-orange-600 transition duration-300"
+                                    className="text-xs md:text-sm lg:text-base px-8 block rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
                                 >
                                     {language === 'EN' ? 'Home' : '主页'}
                                 </Link>
@@ -29,7 +30,7 @@ const Footer = () => {
                             <li>
                                 <Link
                                     to="/about"
-                                    className="text-xs md:text-sm lg:text-base px-8 hover:bg-white hover:text-orange-600 transition duration-300"
+                                    className="text-xs md:text-sm lg:text-base px-8 block rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
                                 >
                                     {language === 'EN' ? 'About' : '关于我们'}
                                 </Link>
@@ -37,15 +38,24 @@ const Footer = () => {
                             <li>
                                 <Link
                                     to="/programs"
-                                    className="text-xs md:text-sm lg:text-base px-8 hover:bg-white hover:text-orange-600 transition duration-300"
+                                    className="text-xs md:text-sm lg:text-base px-8 block rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
                                 >
                                     {language === 'EN' ? 'Programs' : '项目'}
                                 </Link>
                             </li>
                             <li>
                                 <Link
+                                    to="/Gallery"
+                                    className="text-xs md:text-sm lg:text-base px-8 block rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
+
+                                >
+                                    {language === 'EN' ? 'Gallery' : '相册'}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     to="/Announcement"
-                                    className="text-xs md:text-sm lg:text-base px-8 hover:bg-white hover:text-orange-600 transition duration-300"
+                                    className="text-xs md:text-sm lg:text-base px-8 block rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
                                 >
                                     {language === 'EN' ? 'Announcement' : '公告'}
                                 </Link>
@@ -53,7 +63,7 @@ const Footer = () => {
                             <li>
                                 <Link
                                     to="/contact"
-                                    className="text-xs md:text-sm lg:text-base px-8 hover:bg-white hover:text-orange-600 transition duration-300"
+                                    className="text-xs md:text-sm lg:text-base px-8 block rounded-lg hover:bg-orange-600 hover:text-white transition duration-300"
                                 >
                                     {language === 'EN' ? 'Contact Us!' : '联系我们'}
                                 </Link>
@@ -72,15 +82,28 @@ const Footer = () => {
                     {/* Right Section: Follow Us */}
                     <div className="flex flex-col items-center mt-8">
                         <h2 className="text-2xl font-bold mb-4">
+
                             {language === 'EN' ? 'Follow Us！' : '关注我们'}</h2>
-                        <a
-                            href="https://www.instagram.com/legendary_yyc/?igsh=MWRxMTBhNG55eGxtNg%3D%3D&utm_source=qr"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-purple-600 hover:text-orange-400 transition duration-300"
-                        >
-                            <i className="fab fa-instagram fa-3x"></i>
-                        </a>
+                        <div className="flex items-center gap-6">
+                            <a
+                                href="https://www.instagram.com/legendary_yyc/?igsh=MWRxMTBhNG55eGxtNg%3D%3D&utm_source=qr"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-purple-600 hover:text-orange-400 transition duration-300"
+                            >
+                                <i className="fab fa-instagram fa-2x"></i>
+                            </a>
+
+                            {/* Xiaohongshu */}
+                            <a
+                                href="https://www.xiaohongshu.com/user/profile/65ee308e0000000005009c91?xsec_token=YBW2D970Y8qS0qhHSerU7xOdM3W-o2pWwF9PriHIwG9ls=&xsec_source=app_share&xhsshare=CopyLink&appuid=65ee308e0000000005009c91&apptime=1754014941&share_id=e5b357fc49f344cf957af977edaa4535"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:opacity-80 transition duration-300"
+                            >
+                                <img src={redBook} alt="Xiaohongshu" className="w-16 h-16" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

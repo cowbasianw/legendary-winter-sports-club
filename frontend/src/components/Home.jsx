@@ -21,6 +21,7 @@ const HomePage = () => {
     const handleButtonClick = () => {
         navigate('/programs'); // Adjust the path if it's different
     };
+
     return (
 
         <div className="flex flex-col min-h-screen mt-20 md:mt-20 lg:mt-28">
@@ -32,27 +33,29 @@ const HomePage = () => {
                     autoPlay
                     muted
                     loop
+                    playsInline
+                    preload="auto" // Preload the video
+                    onEnded={(e) => e.target.play()} // JavaScript fallback to replay
                 >
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 <div className="absolute inset-0 bg-black bg-opacity-20"></div> {/* Overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center space-y-12 lg:space-y-24">
+                <div className="absolute inset-0 flex flex-col items-center justify-center sm:space-y-6 md:space-y-12 lg:space-y-24">
                     {language === 'EN' ? (
                         <h1 className="text-center text-white font-bold " style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }}>
                             <span className="text-3xl md:text-6xl lg:text-9xl">"Be Legendary"</span>
                         </h1>
                     ) : (
                         <h1 className="text-center text-white font-bold " style={{ textShadow: '2px 2px 8px rgba(230, 81, 0, 0.8)' }}>
-                            <span className="text-3xl md:text-6xl lg:text-9xl">"成为传奇"</span>
+                            <span className="text-3xl md:text-6xl lg:text-9xl">"成为传琦"</span>
                         </h1>
                     )}
 
-                    <div className="mt-1 md:mt-6 lg:mt-24"></div> {/* Responsive spacing */}
 
                     <button
                         onClick={handleButtonClick}
-                        className="bg-orange-400 text-white text-sm lg:text-3xl font-bold py-2 px-4 md:py-4 md:px-8 lg:py-8 lg:px-14 
+                        className="bg-orange-400 text-white text-sm lg:text-3xl mt-6 font-bold py-2 px-4 md:py-4 md:px-8 lg:py-8 lg:px-14 
                         rounded-full hover:bg-white hover:text-orange-600"
                     >
                         {language === 'EN' ? (
@@ -97,6 +100,7 @@ const HomePage = () => {
 
 
                 </div>
+
                 <div className="lg:max-w-4xl mx-auto px-4">
                     {language === 'EN' ? (
                         <>
@@ -118,6 +122,7 @@ const HomePage = () => {
                     )}
 
                 </div>
+
             </div>
 
             <br /><br />

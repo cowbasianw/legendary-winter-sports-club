@@ -42,7 +42,7 @@ const VisionSection = ({ image, text }) => {
 
                             <span className="text-sm lg:text-2xl font-bold p-4 block rounded-xl">
 
-                                传奇冬季运动俱乐部致力于培养精英速滑选手。
+                                传琦冬季运动俱乐部致力于培养精英速滑选手。
                                 我们希望建立一支专业且训练有素的团队。
 
                             </span>

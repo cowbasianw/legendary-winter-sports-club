@@ -1,9 +1,7 @@
-// src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo1 from '../../assets/images/Logo1.jpg';
 import { useLanguage } from '../../context/LanguageContext.jsx';
-
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,13 +11,14 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <nav className="fixed top-0 left-0 w-full bg-opacity-75 flex bg-orange-400 text-white items-center justify-between lg:px-4 py-2 z-50">
-
-
             <div className="flex items-center">
                 <img src={logo1} alt="Encouragement" className="w-16 md:h-16 lg:w-24 lg:h-24 object-cover" />
-
                 <div className="flex flex-col ml-2">
                     {language === 'EN' ? (
                         <>
@@ -35,11 +34,12 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <ul className={`md:flex lg:flex space-x-1 md:space-x-2 lg:space-x-4 justify-center w-1/2 md:w-auto lg:w-auto  ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
+            <ul className={`md:flex lg:flex space-x-1 md:space-x-2 lg:space-x-4 justify-center w-1/2 md:w-auto lg:w-auto ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
                 <li>
                     <Link
                         to="/"
-                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        className="text-xs md:text-sm lg:text-lg font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        onClick={closeMenu}
                     >
                         {language === 'EN' ? 'Home' : '主页'}
                     </Link>
@@ -47,7 +47,8 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/about"
-                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        className="text-xs md:text-sm lg:text-lg font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        onClick={closeMenu}
                     >
                         {language === 'EN' ? 'About' : '关于我们'}
                     </Link>
@@ -55,7 +56,8 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/programs"
-                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        className="text-xs md:text-sm lg:text-lg font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        onClick={closeMenu}
                     >
                         {language === 'EN' ? 'Programs' : '项目'}
                     </Link>
@@ -63,15 +65,26 @@ const Navbar = () => {
                 <li>
                     <Link
                         to="/Announcement"
-                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        className="text-xs md:text-sm lg:text-lg font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        onClick={closeMenu}
                     >
                         {language === 'EN' ? 'Announcement' : '公告'}
                     </Link>
                 </li>
                 <li>
                     <Link
+                        to="/gallery"
+                        className="text-xs md:text-sm lg:text-lg font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        onClick={closeMenu}
+                    >
+                        {language === 'EN' ? 'Gallery' : '相册'}
+                    </Link>
+                </li>
+                <li>
+                    <Link
                         to="/contact"
-                        className="text-xs md:text-sm lg:text-xl font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        className="text-xs md:text-sm lg:text-lg font-bold p-2 lg:p-4 block rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                        onClick={closeMenu}
                     >
                         {language === 'EN' ? 'Contact Us!' : '联系我们'}
                     </Link>
@@ -79,7 +92,7 @@ const Navbar = () => {
             </ul>
             <div className="flex items-center space-x-1 md:space-x-2 lg:space-x-4">
                 <button
-                    className="text-xs md:text-sm lg:text-xl font-bold p-2 rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
+                    className="text-xs md:text-sm lg:text-lg font-bold p-2 rounded-lg hover:bg-white hover:text-orange-600 transition duration-300"
                     onClick={toggleLanguage}
                 >
                     {language === 'EN' ? 'CN' : 'EN'}

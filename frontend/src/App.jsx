@@ -5,14 +5,15 @@ import Footer from './components/sections/Footer.jsx';
 import Home from './components/Home.jsx';
 import About from './components/About.jsx';
 import Programs from './components/Programs.jsx';
+import Gallery from './components/GalleryPage.jsx'
 import Contact from './components/Contact.jsx';
 import Announcement from './components/Announcement.jsx';
 import { LanguageProvider } from './context/LanguageContext.jsx';
 
 
+
 function App() {
   return (
-
     <Router>
       <LanguageProvider>
         <Navbar />
@@ -20,13 +21,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/programs" element={<Programs />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Announcement" element={<Announcement />} />
         </Routes>
-
-
         <Footer />
-      </LanguageProvider>,
+      </LanguageProvider>
     </Router>
 
   );
